@@ -832,10 +832,11 @@ h4 {
 
 /* Contact Section */
 .contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* يوسّط أفقياً */
+    text-align: center;      /* يوسّط النص */
+    gap: 2rem;
 }
 
 .social-links {
