@@ -1,11 +1,11 @@
 :root {
     /* Color System - Dark Mode (Default) */
-    --primary: #1E90FF;
-    /* Electric Blue */
+    --primary: #d98736;
+    /* Golden Orange */
     --secondary: #0A0A0A;
     /* Deep Black */
-    --accent: #00E5FF;
-    /* Neon Cyan */
+    --accent: #eea255;
+    /* Light Orange Accent */
     --neutral: #F4F4F4;
     /* Soft Grey */
 
@@ -17,7 +17,7 @@
     --text-muted: #A0A0A0;
     --border-color: #2a2a2a;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    --glow: 0 0 20px rgba(30, 144, 255, 0.15);
+    --glow: 0 0 20px rgba(217, 135, 54, 0.15);
 }
 
 [data-theme="light"] {
@@ -29,7 +29,7 @@
     --text-muted: #555555;
     --border-color: #E0E0E0;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --glow: 0 0 15px rgba(30, 144, 255, 0.1);
+    --glow: 0 0 15px rgba(217, 135, 54, 0.1);
 }
 
 *,
@@ -133,13 +133,13 @@ h4 {
     background-color: var(--primary);
     color: #fff;
     border: 2px solid var(--primary);
-    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(217, 135, 54, 0.3);
 }
 
 .btn-primary:hover {
     background-color: transparent;
     color: var(--primary);
-    box-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
+    box-shadow: 0 0 20px rgba(217, 135, 54, 0.5);
 }
 
 .btn-outline {
@@ -267,8 +267,8 @@ h4 {
     position: relative;
     padding-top: 80px;
     overflow: hidden;
-    background: radial-gradient(circle at top right, rgba(30, 144, 255, 0.1), transparent 40%),
-        radial-gradient(circle at bottom left, rgba(0, 229, 255, 0.05), transparent 40%);
+    background: radial-gradient(circle at top right, rgba(217, 135, 54, 0.1), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(238, 162, 85, 0.05), transparent 40%);
 }
 
 .hero-content {
@@ -299,7 +299,7 @@ h4 {
     background: radial-gradient(circle at 30% 30%, #333, #0a0a0a);
     border-radius: 50%;
     border: 3px solid var(--primary);
-    box-shadow: 0 0 40px rgba(30, 144, 255, 0.2);
+    box-shadow: 0 0 40px rgba(217, 135, 54, 0.2);
     position: relative;
     overflow: hidden;
     animation: fadeUp 1.2s ease-out forwards, glowPulse 4s infinite alternate;
@@ -314,11 +314,11 @@ h4 {
 
 @keyframes glowPulse {
     from {
-        box-shadow: 0 0 30px rgba(30, 144, 255, 0.2);
+        box-shadow: 0 0 30px rgba(217, 135, 54, 0.2);
     }
 
     to {
-        box-shadow: 0 0 50px rgba(0, 229, 255, 0.4);
+        box-shadow: 0 0 50px rgba(238, 162, 85, 0.4);
     }
 }
 
@@ -424,7 +424,7 @@ h4 {
     margin-top: 2rem;
     padding: 1.5rem;
     border-left: 4px solid var(--accent);
-    background: rgba(30, 144, 255, 0.05);
+    background: rgba(217, 135, 54, 0.05);
     border-radius: 0 10px 10px 0;
 }
 
@@ -590,7 +590,7 @@ h4 {
 .video-card:hover {
     border-color: var(--accent);
     transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0, 229, 255, 0.1);
+    box-shadow: 0 5px 20px rgba(238, 162, 85, 0.1);
 }
 
 .video-thumbnail {
@@ -610,7 +610,6 @@ h4 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-fit: cover;
     transition: opacity 0.3s ease, transform 0.5s ease;
 }
 
@@ -625,12 +624,12 @@ h4 {
     transform: translate(-50%, -50%);
     width: 60px;
     height: 60px;
-    background: rgba(30, 144, 255, 0.9);
+    background: rgba(217, 135, 54, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
+    box-shadow: 0 0 20px rgba(217, 135, 54, 0.5);
     transition: all 0.3s ease;
     z-index: 2;
 }
@@ -645,7 +644,7 @@ h4 {
 .video-thumbnail:hover .play-button-overlay {
     transform: translate(-50%, -50%) scale(1.1);
     background: var(--accent);
-    box-shadow: 0 0 30px rgba(0, 229, 255, 0.6);
+    box-shadow: 0 0 30px rgba(238, 162, 85, 0.6);
 }
 
 .video-thumbnail video {
@@ -689,9 +688,9 @@ h4 {
     /* Large container */
     background: #000;
     border-radius: 16px;
-    box-shadow: 0 0 60px rgba(0, 229, 255, 0.25);
-    /* Cinematic Blue Glow */
-    border: 1px solid rgba(0, 229, 255, 0.1);
+    box-shadow: 0 0 60px rgba(238, 162, 85, 0.25);
+    /* Cinematic Orange Glow */
+    border: 1px solid rgba(238, 162, 85, 0.1);
     transform: scale(0.9);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
@@ -744,7 +743,7 @@ h4 {
 .video-card:hover {
     border-color: var(--accent);
     transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0, 229, 255, 0.1);
+    box-shadow: 0 5px 20px rgba(238, 162, 85, 0.1);
 }
 
 .video-thumbnail {
@@ -834,8 +833,8 @@ h4 {
 .contact-container {
     display: flex;
     flex-direction: column;
-    align-items: center;     /* يوسّط أفقياً */
-    text-align: center;      /* يوسّط النص */
+    align-items: center;      /* يوسّط أفقياً */
+    text-align: center;       /* يوسّط النص */
     gap: 2rem;
 }
 
@@ -1225,9 +1224,9 @@ html[dir="rtl"] .back-to-top .fa-arrow-up {
 }
 
 @keyframes arrowPulse {
-    0% { box-shadow: 0 0 0 rgba(0,229,255,0); }
-    50% { box-shadow: 0 0 20px rgba(0,229,255,0.6); }
-    100% { box-shadow: 0 0 0 rgba(0,229,255,0); }
+    0% { box-shadow: 0 0 0 rgba(238, 162, 85, 0); }
+    50% { box-shadow: 0 0 20px rgba(238, 162, 85, 0.6); }
+    100% { box-shadow: 0 0 0 rgba(238, 162, 85, 0); }
 }
 
 /* Card */
@@ -1242,7 +1241,7 @@ html[dir="rtl"] .back-to-top .fa-arrow-up {
 
 .timeline-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,229,255,0.15);
+    box-shadow: 0 10px 30px rgba(238, 162, 85, 0.15);
 }
 
 .timeline-card h3 {
