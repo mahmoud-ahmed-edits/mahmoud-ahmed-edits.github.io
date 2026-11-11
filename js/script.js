@@ -1,3 +1,4 @@
+/*! © 2026 Mahmoud Ahmed. All Rights Reserved. Copying or reusing this code or design without written permission is not allowed. */
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Dark Mode Toggle ---
