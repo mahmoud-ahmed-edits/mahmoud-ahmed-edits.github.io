@@ -166,3 +166,127 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+/* ===============================
+   ANIMATION PACK
+   =============================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    // --- Cursor glow that follows the mouse ---
+    const glow = document.querySelector('.cursor-glow');
+    const dot = document.querySelector('.cursor-dot');
+    if (glow && dot && finePointer && !reduceMotion) {
+        let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+        let gx = mx, gy = my;
+        window.addEventListener('mousemove', (e) => {
+            mx = e.clientX; my = e.clientY;
+            dot.style.transform = `translate(${mx}px, ${my}px)`;
+            document.body.classList.add('has-cursor');
+        });
+        document.addEventListener('mouseleave', () => document.body.classList.remove('has-cursor'));
+        (function follow() {
+            gx += (mx - gx) * 0.12;
+            gy += (my - gy) * 0.12;
+            glow.style.transform = `translate(${gx}px, ${gy}px)`;
+            requestAnimationFrame(follow);
+        })();
+        document.querySelectorAll('a, button, .tilt, .tilt-soft').forEach(el => {
+            el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
+        });
+    }
+
+    // --- Scroll progress bar + navbar shrink ---
+    const bar = document.querySelector('.scroll-progress');
+    const navbar = document.querySelector('.navbar');
+    const onScroll = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? window.scrollY / max : 0;
+        if (bar) bar.style.transform = `scaleX(${p})`;
+        if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 40);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // --- Count-up numbers ---
+    document.querySelectorAll('.count').forEach(el => {
+        const target = parseInt(el.dataset.target, 10) || 0;
+        if (reduceMotion) { el.textContent = target; return; }
+        let n = 0;
+        const step = () => {
+            n++;
+            el.textContent = n;
+            if (n < target) setTimeout(step, 180);
+        };
+        setTimeout(step, 600);
+    });
+
+    // --- Stagger reveal inside grids ---
+    document.querySelectorAll('.services-grid, .why-grid, .projects-split, .contact-cards').forEach(grid => {
+        grid.querySelectorAll('.animate-on-scroll').forEach((el, idx) => {
+            el.style.setProperty('--delay', `${idx * 0.12}s`);
+        });
+    });
+
+    // --- 3D tilt + spotlight on cards ---
+    if (finePointer && !reduceMotion) {
+        document.querySelectorAll('.tilt, .tilt-soft').forEach(card => {
+            const max = card.classList.contains('tilt-soft') ? 4 : 8;
+            card.addEventListener('transitionend', (e) => {
+                if (e.propertyName === 'transform' && card.classList.contains('visible')) card.classList.add('tilt-ready');
+            });
+            card.addEventListener('mousemove', (e) => {
+                const r = card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width;
+                const y = (e.clientY - r.top) / r.height;
+                card.style.setProperty('--mx', `${x * 100}%`);
+                card.style.setProperty('--my', `${y * 100}%`);
+                if (card.classList.contains('tilt-ready')) {
+                    card.style.transform = `perspective(900px) rotateX(${(0.5 - y) * max}deg) rotateY(${(x - 0.5) * max}deg) translateY(-4px)`;
+                }
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+        });
+
+        // --- Magnetic buttons ---
+        document.querySelectorAll('.magnetic').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const r = btn.getBoundingClientRect();
+                const x = e.clientX - r.left - r.width / 2;
+                const y = e.clientY - r.top - r.height / 2;
+                btn.style.translate = `${x * 0.25}px ${y * 0.35}px`;
+            });
+            btn.addEventListener('mouseleave', () => { btn.style.translate = ''; });
+        });
+
+        // --- Hero parallax on mouse move ---
+        const hero = document.querySelector('.hero-section');
+        const blobs = document.querySelector('.hero-blobs');
+        const ring = document.querySelector('.hero-image-content');
+        if (hero && blobs && ring) {
+            hero.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth - 0.5;
+                const y = e.clientY / window.innerHeight - 0.5;
+                blobs.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
+                ring.style.translate = `${x * 18}px ${y * 18}px`;
+            });
+        }
+    }
+});
+
+// --- Split "My Works" into letters for the animation ---
+document.querySelectorAll('[data-split]').forEach(el => {
+    const text = el.textContent.trim();
+    el.setAttribute('aria-label', text);
+    el.textContent = '';
+    [...text].forEach((ch, i) => {
+        const span = document.createElement('span');
+        span.className = 'char' + (ch === ' ' ? ' space' : '');
+        span.textContent = ch === ' ' ? ' ' : ch;
+        span.style.setProperty('--i', i);
+        span.setAttribute('aria-hidden', 'true');
+        el.appendChild(span);
+    });
+});
