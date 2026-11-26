@@ -26,7 +26,8 @@
     --contact-ink: #f4efea;
     --contact-muted: #a59d97;
     --shadow-soft: 0 18px 40px -18px rgba(23, 21, 22, 0.35);
-    --float-shadow: rgba(23, 21, 22, 0.22);
+    --float-shadow: rgba(23, 21, 22, 0.3);
+    --float-shadow-soft: rgba(23, 21, 22, 0.2);
 
     --f-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
     --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -59,7 +60,8 @@
     --contact-ink: #f4efea;
     --contact-muted: #a59d97;
     --shadow-soft: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
-    --float-shadow: rgba(0, 0, 0, 0.55);
+    --float-shadow: rgba(0, 0, 0, 0.6);
+    --float-shadow-soft: rgba(0, 0, 0, 0.5);
     color-scheme: dark;
 }
 
@@ -458,6 +460,28 @@ h1, h2, h3, h4 {
     50% {
         translate: 0 -7px;
         text-shadow: 0 16px 20px var(--float-shadow);
+    }
+}
+
+/* Same floating drop shadow, softer, for the supporting text
+   so it stays readable on the light backgrounds */
+.float-soft {
+    text-shadow: 0 3px 8px var(--float-shadow-soft);
+    animation: floatySoft 7s ease-in-out infinite;
+}
+
+.float-soft:nth-of-type(2n) {
+    animation-delay: -3.5s;
+}
+
+@keyframes floatySoft {
+    0%, 100% {
+        translate: 0 0;
+        text-shadow: 0 3px 8px var(--float-shadow-soft);
+    }
+    50% {
+        translate: 0 -4px;
+        text-shadow: 0 10px 14px var(--float-shadow-soft);
     }
 }
 
@@ -1121,6 +1145,7 @@ html:not(.js) mark {
     color: var(--contact-ink);
     overflow: hidden;
     --float-shadow: rgba(0, 0, 0, 0.6);
+    --float-shadow-soft: rgba(0, 0, 0, 0.55);
 }
 
 .window-light.dim .beam {
