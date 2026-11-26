@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- © 2026 Mahmoud Ahmed. All Rights Reserved. Copying or reusing this website's code or design without written permission is not allowed. -->
-<html lang="en" dir="ltr" data-theme="dark">
+<html lang="en" dir="ltr" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -15,20 +15,29 @@
     <meta property="og:title" content="Mahmoud Ahmed | Professional Video Editor">
     <meta property="og:description"
         content="4+ years of video editing experience — YouTube, Shorts & Reels, cinematic and commercial videos.">
-    <meta property="og:image" content="https://mahmoud-ahmed-edits.github.io/img/IMG_0576.PNG">
+    <meta property="og:image" content="https://mahmoud-ahmed-edits.github.io/img/mahmoud-ahmed.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#0A0A0A">
+    <meta name="theme-color" content="#8f8a87">
     <meta name="author" content="Mahmoud Ahmed">
     <meta name="copyright" content="© 2026 Mahmoud Ahmed. All Rights Reserved.">
 
+    <!-- Apply saved theme before first paint (no flash) -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            d.classList.add('js');
+            try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t); } catch (e) { }
+        })();
+    </script>
+
     <!-- Site icon -->
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-    <link rel="apple-touch-icon" href="img/IMG_0576.PNG">
+    <link rel="apple-touch-icon" href="img/mahmoud-ahmed-square.jpg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
@@ -39,16 +48,13 @@
 
 <body>
 
-    <!-- Cursor glow + scroll progress -->
-    <div class="cursor-glow" aria-hidden="true"></div>
-    <div class="cursor-dot" aria-hidden="true"></div>
     <div class="scroll-progress" aria-hidden="true"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#hero" class="logo">Mahmoud <span class="accent">Ahmed</span></a>
-            <button class="mobile-menu-btn" aria-label="Toggle navigation">
+            <a href="#hero" class="logo">Mahmoud <span>Ahmed</span></a>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links">
@@ -59,8 +65,8 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact" class="btn-nav">Contact Me</a></li>
                 <li class="nav-controls">
-                    <button id="theme-toggle" aria-label="Toggle Dark Mode" class="icon-btn"><i
-                            class="fas fa-sun"></i></button>
+                    <button id="theme-toggle" aria-label="Toggle dark mode" class="icon-btn"><i
+                            class="fas fa-moon"></i></button>
                 </li>
             </ul>
         </div>
@@ -68,89 +74,93 @@
 
     <!-- Hero Section -->
     <header id="hero" class="hero-section">
-        <div class="hero-blobs" aria-hidden="true">
-            <span class="blob blob-1"></span>
-            <span class="blob blob-2"></span>
-            <span class="blob blob-3"></span>
+        <div class="window-light" aria-hidden="true">
+            <span class="beam beam-1"></span>
+            <span class="beam beam-2"></span>
+            <span class="leaf"></span>
         </div>
         <div class="container hero-content">
             <div class="hero-text-content">
-                <span class="experience-badge animate-fade-up delay-1"><i class="fas fa-award"></i> <span><span class="count" data-target="4">0</span>+ Years of Experience</span></span>
-                <h2 class="animate-fade-up delay-1">Hello, I'm</h2>
-                <h1 class="animate-fade-up delay-2">Mahmoud Ahmed</h1>
-                <h3 class="animate-fade-up delay-3"><span>Professional</span> <span class="text-gradient">Video Editor</span></h3>
-                <p class="hero-text animate-fade-up delay-4">
+                <span class="experience-badge reveal"><i class="rec-dot"></i> <span><span class="count" data-target="4">0</span>+ Years of Experience</span></span>
+                <h2 class="hero-hello reveal">Hello, I'm</h2>
+                <h1 class="hero-name float-text"><span>Mahmoud</span> <span class="alt">Ahmed.</span></h1>
+                <h3 class="hero-role reveal">Professional <span class="hl">Video Editor</span></h3>
+                <p class="hero-text reveal">
                     I turn raw footage into high-impact videos that keep people watching — from YouTube videos to
                     scroll-stopping Shorts and Reels, for creators and brands.
                 </p>
-                <div class="cta-group animate-fade-up delay-5">
-                    <a href="#projects" class="btn btn-primary magnetic">View My Work</a>
-                    <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="btn btn-outline magnetic"><i class="fab fa-whatsapp"></i> Let's Talk</a>
+                <div class="cta-group reveal">
+                    <a href="#projects" class="btn btn-dark">View My Work</a>
+                    <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="btn btn-line"><i class="fab fa-whatsapp"></i> Let's Talk</a>
                 </div>
             </div>
-            <div class="hero-image-content animate-fade-up delay-3">
-                <div class="hero-img-ring">
-                    <div class="hero-img-placeholder">
-                        <img src="img/IMG_0576.PNG" alt="Mahmoud Ahmed - Professional Video Editor">
-                    </div>
+            <div class="hero-photo reveal">
+                <div class="hero-photo-frame">
+                    <img src="img/mahmoud-ahmed.jpg" alt="Mahmoud Ahmed - Professional Video Editor" width="1024" height="1536">
                 </div>
+                <span class="float-tag tag-years"><b>4+</b> years editing</span>
+                <span class="float-tag tag-place"><i class="fas fa-location-dot"></i> Giza · Remote worldwide</span>
             </div>
         </div>
     </header>
 
     <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">About <span class="accent">Me</span></h2>
-
-            <div class="about-text animate-on-scroll">
-                <p>
-                    <strong>I'm Mahmoud</strong>, a professional video editor with <strong>4+ years of
-                    experience</strong>. I edit both long-form YouTube videos and short-form content — Shorts,
-                    Reels and TikToks — along with cinematic pieces and commercial ads.
-                </p>
-                <p>
-                    Short-form is where I really shine: strong hooks in the first second, fast pacing and clean
-                    captions. In long-form, I focus on storytelling and pacing that keep viewers watching until the
-                    end. With polished color grading and sound design, every video feels on-brand — whether you're
-                    a creator growing your channel or a brand launching a campaign.
-                </p>
+    <section id="about" class="section about-section">
+        <div class="container about-grid">
+            <div class="about-photo animate-on-scroll">
+                <img src="img/mahmoud-ahmed.jpg" alt="Mahmoud Ahmed" loading="lazy" width="1024" height="1536">
+                <span class="about-years">4+ yrs</span>
             </div>
+            <div class="about-body">
+                <span class="eyebrow animate-on-scroll">About me</span>
+                <h2 class="section-title float-text">About <span class="accent">Me</span></h2>
 
-            <h3 class="why-title animate-on-scroll">Why Work <span class="accent">With Me</span></h3>
-            <div class="why-grid">
-                <div class="why-card tilt animate-on-scroll">
-                    <i class="fas fa-bolt"></i>
-                    <h4>Fast Delivery</h4>
-                    <p>Clear deadlines, delivered on time — no chasing needed.</p>
+                <div class="about-text animate-on-scroll">
+                    <p class="about-lead">
+                        I'm Mahmoud, a professional video editor with <mark>4+ years of experience</mark>. I edit
+                        both long-form YouTube videos and short-form content — <mark>Shorts, Reels and TikToks</mark>
+                        — along with cinematic pieces and commercial ads.
+                    </p>
+                    <p>
+                        Short-form is where I really shine: strong hooks in the first second, fast pacing and clean
+                        captions. In long-form, I focus on storytelling and pacing that keep viewers watching until the
+                        end. With polished color grading and sound design, every video feels on-brand — whether you're
+                        a creator growing your channel or a brand launching a campaign.
+                    </p>
                 </div>
-                <div class="why-card tilt animate-on-scroll">
-                    <i class="fas fa-rotate"></i>
-                    <h4>Revisions Included</h4>
-                    <p>We refine the edit together until it's exactly what you want.</p>
-                </div>
-                <div class="why-card tilt animate-on-scroll">
-                    <i class="fas fa-comments"></i>
-                    <h4>Easy Communication</h4>
-                    <p>Quick replies and regular updates throughout the project.</p>
-                </div>
-                <div class="why-card tilt animate-on-scroll">
-                    <i class="fas fa-chart-line"></i>
-                    <h4>Made to Perform</h4>
-                    <p>Edits built for each platform to grab attention and keep viewers watching.</p>
+
+                <h3 class="why-title float-text">Why Work <span class="accent">With Me</span></h3>
+                <div class="why-grid">
+                    <div class="why-card animate-on-scroll">
+                        <h4>Fast Delivery</h4>
+                        <p>Clear deadlines, delivered on time — no chasing needed.</p>
+                    </div>
+                    <div class="why-card animate-on-scroll">
+                        <h4>Revisions Included</h4>
+                        <p>We refine the edit together until it's exactly what you want.</p>
+                    </div>
+                    <div class="why-card animate-on-scroll">
+                        <h4>Easy Communication</h4>
+                        <p>Quick replies and regular updates throughout the project.</p>
+                    </div>
+                    <div class="why-card animate-on-scroll">
+                        <h4>Made to Perform</h4>
+                        <p>Edits built for each platform to grab attention and keep viewers watching.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section bg-alt">
+    <section id="skills" class="section skills-section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">My <span class="accent">Skills</span></h2>
+            <span class="eyebrow center animate-on-scroll">What I'm good at</span>
+            <h2 class="section-title center float-text">My <span class="accent">Skills</span></h2>
 
-            <div class="services-grid">
-                <div class="service-card tilt animate-on-scroll">
-                    <i class="fas fa-video service-icon"></i>
+            <div class="skills-grid">
+                <div class="skill-card animate-on-scroll">
+                    <span class="skill-icon"><i class="fas fa-video"></i></span>
                     <h3>Video Editing</h3>
                     <ul class="skill-list">
                         <li>Shorts / Reels / TikTok</li>
@@ -160,20 +170,20 @@
                     </ul>
                 </div>
 
-                <div class="service-card tilt animate-on-scroll">
-                    <i class="fas fa-photo-video service-icon"></i>
-                    <h3>Visual & Audio</h3>
+                <div class="skill-card animate-on-scroll">
+                    <span class="skill-icon"><i class="fas fa-photo-video"></i></span>
+                    <h3>Visual &amp; Audio</h3>
                     <ul class="skill-list">
                         <li>Color Grading</li>
                         <li>Sound Design</li>
                         <li>Animated Captions</li>
-                        <li>VFX & Transitions</li>
+                        <li>VFX &amp; Transitions</li>
                     </ul>
                 </div>
 
-                <div class="service-card tilt animate-on-scroll">
-                    <i class="fas fa-tools service-icon"></i>
-                    <h3>Tools & Tech</h3>
+                <div class="skill-card animate-on-scroll">
+                    <span class="skill-icon"><i class="fas fa-tools"></i></span>
+                    <h3>Tools &amp; Tech</h3>
                     <ul class="skill-list">
                         <li>Premiere Pro</li>
                         <li>After Effects</li>
@@ -182,12 +192,12 @@
                     </ul>
                 </div>
 
-                <div class="service-card tilt animate-on-scroll">
-                    <i class="fas fa-wand-magic-sparkles service-icon"></i>
+                <div class="skill-card skill-card-ai animate-on-scroll">
+                    <span class="skill-icon"><i class="fas fa-wand-magic-sparkles"></i></span>
                     <h3>AI Videos</h3>
                     <ul class="skill-list">
                         <li>AI-Generated Videos</li>
-                        <li>AI Visuals & Scenes</li>
+                        <li>AI Visuals &amp; Scenes</li>
                         <li>AI Voiceovers</li>
                         <li>AI-Enhanced Editing</li>
                     </ul>
@@ -197,9 +207,10 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section">
+    <section id="projects" class="section projects-section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">My <span class="accent">Projects</span></h2>
+            <span class="eyebrow center animate-on-scroll">Selected work</span>
+            <h2 class="section-title center float-text">My <span class="accent">Projects</span></h2>
 
             <!--
                 VIDEOS GO HERE.
@@ -221,28 +232,32 @@
             -->
 
             <div class="projects-split">
-                <div class="portfolio-feature tilt-soft animate-on-scroll">
-                    <div class="portfolio-feature-icon"><i class="fas fa-film"></i></div>
-                    <h3 class="works-title" data-split>My Works</h3>
+                <div class="work-card animate-on-scroll">
+                    <div class="reel-frames" aria-hidden="true">
+                        <span><i class="fas fa-play"></i></span>
+                        <span><i class="fas fa-play"></i></span>
+                        <span><i class="fas fa-play"></i></span>
+                    </div>
+                    <h3>My Works</h3>
                     <p>A selection of my best work across every style I edit:</p>
                     <ul class="category-chips">
-                        <li><i class="fas fa-mobile-screen-button"></i> Shorts & Reels</li>
+                        <li><i class="fas fa-mobile-screen-button"></i> Shorts &amp; Reels</li>
                         <li><i class="fab fa-tiktok"></i> TikTok</li>
                         <li><i class="fas fa-bullhorn"></i> Commercials</li>
                     </ul>
                     <a href="https://drive.google.com/drive/folders/1-1w1vYZmclSr6f-nv7SZDWRIHckUxNXC?usp=sharing"
-                        class="btn btn-primary magnetic" target="_blank" rel="noopener">
+                        class="btn btn-sun" target="_blank" rel="noopener">
                         <i class="fab fa-google-drive"></i> Watch My Work
                     </a>
                 </div>
 
-                <aside id="feedback" class="feedback-panel tilt-soft animate-on-scroll">
-                    <div class="feedback-quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <span class="panel-eyebrow">Client Feedback</span>
+                <aside id="feedback" class="feedback-card animate-on-scroll">
+                    <span class="eyebrow">Client Feedback</span>
+                    <i class="fas fa-quote-left feedback-quote" aria-hidden="true"></i>
                     <h3>What My Clients Say</h3>
                     <p>Real messages and reviews from creators and brands I've worked with.</p>
                     <a href="https://drive.google.com/drive/folders/1bFNQIEyT3KbeM4JYlJVOazuAUslg0jVI?usp=drive_link"
-                        class="btn btn-outline magnetic" target="_blank" rel="noopener">
+                        class="btn btn-dark" target="_blank" rel="noopener">
                         <i class="fas fa-comment-dots"></i> Read Client Feedback
                     </a>
                 </aside>
@@ -251,77 +266,79 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section bg-alt">
+    <section id="services" class="section services-section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">My <span class="accent">Services</span></h2>
-            <div class="services-grid">
+            <span class="eyebrow animate-on-scroll">Services</span>
+            <h2 class="section-title float-text">What I <span class="accent">Do</span></h2>
 
-                <div class="service-card tilt animate-on-scroll">
-                    <i class="fas fa-bolt service-icon"></i>
-                    <h3>Shorts, Reels & TikTok</h3>
+            <div class="svc-list">
+                <div class="svc-row animate-on-scroll">
+                    <span class="svc-num">01</span>
+                    <h3>Shorts, Reels &amp; TikTok</h3>
                     <p>Fast, punchy vertical edits with strong hooks in the first second, animated captions and
                         trending styles that keep viewers watching.</p>
                 </div>
-
-                <div class="service-card tilt animate-on-scroll">
-                    <i class="fab fa-youtube service-icon"></i>
+                <div class="svc-row animate-on-scroll">
+                    <span class="svc-num">02</span>
                     <h3>YouTube Long-Form</h3>
                     <p>Retention-focused editing for YouTube: smart pacing, B-roll, captions and storytelling that
                         keeps viewers watching to the end.</p>
                 </div>
-
-                <div class="service-card tilt animate-on-scroll">
-                    <i class="fas fa-film service-icon"></i>
-                    <h3>Cinematic & Commercial</h3>
+                <div class="svc-row animate-on-scroll">
+                    <span class="svc-num">03</span>
+                    <h3>Cinematic &amp; Commercial</h3>
                     <p>Color grading, sound design and narrative pacing for ads, promos, trailers and brand films.</p>
                 </div>
-
-                <div class="service-card tilt animate-on-scroll">
-                    <i class="fas fa-shapes service-icon"></i>
+                <div class="svc-row animate-on-scroll">
+                    <span class="svc-num">04</span>
                     <h3>Motion Graphics</h3>
                     <p>Animated titles, text, lower thirds and visual effects that lift your brand and production
                         value.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
+        <div class="window-light dim" aria-hidden="true">
+            <span class="beam beam-1"></span>
+            <span class="beam beam-2"></span>
+        </div>
         <div class="container contact-container">
-            <div class="contact-info animate-on-scroll">
-                <h2 class="section-title">Let's <span class="accent">Collaborate</span></h2>
-                <p class="contact-lead">Want your videos to actually get watched? Send me a message and let's
+            <div class="contact-info">
+                <span class="eyebrow animate-on-scroll">Let's collaborate</span>
+                <h2 class="contact-title float-text">Let's make your next <span class="accent">video.</span></h2>
+                <p class="contact-lead animate-on-scroll">Want your videos to actually get watched? Send me a message and let's
                     create something that stops the scroll.</p>
 
-                <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="btn btn-whatsapp magnetic">
+                <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="btn btn-sun animate-on-scroll">
                     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
 
-                <div class="contact-cards">
-                    <a href="tel:+201131473750" class="contact-card">
-                        <i class="fas fa-phone"></i>
-                        <span class="contact-label">Phone / WhatsApp</span>
-                        <span class="contact-value">01131473750</span>
-                    </a>
-                    <a href="mailto:maakholif2005@gmail.com" class="contact-card">
-                        <i class="fas fa-envelope"></i>
-                        <span class="contact-label">Email</span>
-                        <span class="contact-value">maakholif2005@gmail.com</span>
-                    </a>
-                    <div class="contact-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span class="contact-label">Location</span>
-                        <span class="contact-value">Giza, Egypt · Remote worldwide</span>
-                    </div>
-                </div>
-
-                <div class="social-links">
+                <div class="social-links animate-on-scroll">
                     <a href="https://www.facebook.com/share/1FU3grEqgS/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.linkedin.com/in/mahmoud-video-editor-146415424" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://www.instagram.com/ma7moud_editor?igsh=MW5ocDUxYjZjMHZvMw%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.tiktok.com/@ma7moud_editor?_r=1&_t=ZS-94K9Zb2Dur4" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-cards">
+                <a href="tel:+201131473750" class="contact-card animate-on-scroll">
+                    <i class="fas fa-phone"></i>
+                    <span class="contact-label">Phone / WhatsApp</span>
+                    <span class="contact-value">01131473750</span>
+                </a>
+                <a href="mailto:maakholif2005@gmail.com" class="contact-card animate-on-scroll">
+                    <i class="fas fa-envelope"></i>
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">maakholif2005@gmail.com</span>
+                </a>
+                <div class="contact-card animate-on-scroll">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="contact-label">Location</span>
+                    <span class="contact-value">Giza, Egypt · Remote worldwide</span>
                 </div>
             </div>
         </div>
@@ -332,7 +349,7 @@
         <div class="container footer-content">
             <div class="footer-socials">
                 <a href="https://www.facebook.com/share/1FU3grEqgS/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/in/mahmoud-video-editor-146415424" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/mahmoud-video-editor-146415424" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://t.me/ma7moud_editor" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
                 <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://www.instagram.com/ma7moud_editor?igsh=MW5ocDUxYjZjMHZvMw%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -342,6 +359,11 @@
             <a href="#hero" class="back-to-top">Back to Top <i class="fas fa-arrow-up"></i></a>
         </div>
     </footer>
+
+    <!-- Floating WhatsApp button (mobile) -->
+    <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i> WhatsApp me
+    </a>
 
     <!-- Video Modal -->
     <div id="video-modal" class="video-modal">
