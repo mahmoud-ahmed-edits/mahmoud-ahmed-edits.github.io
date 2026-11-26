@@ -120,6 +120,17 @@
 
     document.querySelectorAll('.animate-on-scroll, .float-text:not(.hero-name)').forEach(el => io.observe(el));
 
+    // --- Light that follows the mouse inside cards ---
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.querySelectorAll('.skill-card, .why-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const r = card.getBoundingClientRect();
+                card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+                card.style.setProperty('--my', `${e.clientY - r.top}px`);
+            });
+        });
+    }
+
     // --- Count-up for years ---
     document.querySelectorAll('.count').forEach(el => {
         const target = parseInt(el.dataset.target, 10) || 0;
