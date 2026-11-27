@@ -368,12 +368,10 @@ h1, h2, h3, h4 {
     width: 52%;
     background: repeating-linear-gradient(100deg,
             transparent 0 6%,
-            rgba(253, 213, 161, 0.62) 6% 14%,
+            rgba(253, 213, 161, 0.42) 6% 14%,
             transparent 14% 19%);
     filter: blur(22px);
-    mix-blend-mode: soft-light;
     transform-origin: 30% 0%;
-    will-change: transform, opacity;
 }
 
 .beam-1 {
@@ -418,7 +416,6 @@ h1, h2, h3, h4 {
 }
 
 [data-theme="dark"] .beam {
-    mix-blend-mode: screen;
     opacity: 0.15;
 }
 
@@ -444,7 +441,6 @@ h1, h2, h3, h4 {
 .js .float-text .word {
     opacity: 0;
     transform: translateY(45%) scale(0.96);
-    filter: blur(10px);
 }
 
 .js .float-text.in .word {
@@ -458,7 +454,6 @@ h1, h2, h3, h4 {
     to {
         opacity: 1;
         transform: none;
-        filter: blur(0);
     }
 }
 
@@ -500,8 +495,7 @@ h1, h2, h3, h4 {
 .js .animate-on-scroll {
     opacity: 0;
     transform: translateY(28px);
-    filter: blur(6px);
-    transition: opacity 1.1s var(--ease), transform 1.1s var(--ease), filter 1.1s var(--ease);
+    transition: opacity 1.1s var(--ease), transform 1.1s var(--ease);
     transition-delay: var(--delay, 0s);
 }
 
@@ -509,7 +503,6 @@ h1, h2, h3, h4 {
 .js .animate-on-scroll.visible {
     opacity: 1;
     transform: none;
-    filter: none;
 }
 
 /* =========================================================
@@ -881,7 +874,7 @@ html:not(.js) mark {
 
 .js .why-card.visible,
 .why-card {
-    transition: opacity 1.1s var(--ease), transform 0.6s var(--ease), filter 1.1s var(--ease), box-shadow 0.6s var(--ease);
+    transition: opacity 1.1s var(--ease), transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
 }
 
 .why-card:hover {
@@ -920,7 +913,7 @@ html:not(.js) mark {
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 1.8rem 1.6rem;
-    transition: opacity 1.1s var(--ease), transform 0.6s var(--ease), filter 1.1s var(--ease), box-shadow 0.6s var(--ease), background-color 0.4s ease;
+    transition: opacity 1.1s var(--ease), transform 0.6s var(--ease), box-shadow 0.6s var(--ease), background-color 0.4s ease;
 }
 
 .skill-card,
@@ -962,7 +955,7 @@ html:not(.js) mark {
 .skill-card,
 .js .skill-card.visible,
 .js .why-card.visible {
-    transition: opacity 1.1s var(--ease), transform 0.6s var(--ease), filter 1.1s var(--ease),
+    transition: opacity 1.1s var(--ease), transform 0.6s var(--ease),
         box-shadow 0.6s var(--ease), border-color 0.5s ease;
 }
 
@@ -1151,7 +1144,7 @@ html:not(.js) mark {
 .js .svc-row.visible,
 .svc-row {
     transition: opacity 0.6s var(--ease), background-color 0.6s var(--ease), box-shadow 0.6s var(--ease),
-        transform 1.1s var(--ease), filter 1.1s var(--ease), border-color 0.6s ease;
+        transform 1.1s var(--ease), border-color 0.6s ease;
 }
 
 .svc-row:last-child {
@@ -1206,8 +1199,7 @@ html:not(.js) mark {
 }
 
 .window-light.dim .beam {
-    mix-blend-mode: screen;
-    opacity: 0.26;
+    opacity: 0.3;
 }
 
 .window-light.dim .beam-2 {
@@ -1331,7 +1323,7 @@ html:not(.js) mark {
 
 .js .contact-card.visible,
 .contact-card {
-    transition: opacity 1.1s var(--ease), transform 0.6s var(--ease), filter 1.1s var(--ease), border-color 0.4s ease;
+    transition: opacity 1.1s var(--ease), transform 0.6s var(--ease), border-color 0.4s ease;
 }
 
 a.contact-card:hover {
