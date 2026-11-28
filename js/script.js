@@ -83,6 +83,7 @@
         chip1: '<i class="fas fa-mobile-screen-button"></i> شورتس وريلز',
         chip2: '<i class="fab fa-tiktok"></i> تيك توك',
         chip3: '<i class="fas fa-bullhorn"></i> إعلانات',
+        chip4: '<i class="fab fa-youtube"></i> فيديوهات طويلة',
         works_btn: '<i class="fab fa-google-drive"></i> شاهد أعمالي',
         fb_eyebrow: 'آراء العملاء',
         fb_t: 'ماذا يقول عملائي',
