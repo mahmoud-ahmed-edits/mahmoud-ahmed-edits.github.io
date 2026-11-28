@@ -8,10 +8,19 @@
  *   3. The script builds a new 1080x1920 comp "<name> - BeforeAfter",
  *      opens it and adds it to the Render Queue. You just press Render.
  *
- *  Which video is Before / After?
- *   - Layer (or file) name contains "before" / "قبل"  -> Before
- *   - Layer (or file) name contains "after"  / "بعد"  -> After
- *   - Otherwise: TOP video layer = After, the one under it = Before.
+ *  Which video is Before / After?  (by NAME only - no guessing)
+ *   - Video named "After"  (or "بعد")  -> After
+ *   - Video named "Before" (or "قبل")  -> Before
+ *   (layer name or file name, e.g. After.mp4 / Before.mp4)
+ *
+ *  Font: Alexandria (Google Fonts) - install it before running.
+ *
+ *  Floating shadow (Motion Kit):
+ *   Put the Motion Kit floating shadow saved as an Animation Preset
+ *   named "FloatingShadow.ffx" next to this script (or set
+ *   CFG.floatingShadowPreset). It is applied to both video frames,
+ *   both labels and the CTA text. If the file is missing, a built-in
+ *   floating shadow is used instead.
  *
  *  Audio: After audio is kept, Before is muted.
  *  Any audio-only layers (music / SFX) in the comp are copied too.
@@ -24,9 +33,10 @@
         W: 1080, H: 1920,
         ctaLine1: "Ready to elevate your story?",
         ctaLine2: "Comment \"Edit\"",
-        ctaFont1: "SegoeUI",          // fallback: AE substitutes if missing
-        ctaFont2: "SegoeUI-Bold",
-        pillFont: "TimesNewRomanPSMT",
+        ctaFont1: "Alexandria-Regular",
+        ctaFont2: "Alexandria-Bold",
+        pillFont: "Alexandria-Medium",
+        floatingShadowPreset: "",      // full path to .ffx; empty = FloatingShadow.ffx next to this script
         beforeLabel: "Before",
         afterLabel: "After",
         addToRenderQueue: true
@@ -65,6 +75,27 @@
         d.property("ADBE Drop Shadow-0004").setValue(dist);
         d.property("ADBE Drop Shadow-0005").setValue(soft);
         return d;
+    }
+
+    // Motion Kit floating shadow preset if available, else built-in floating shadow
+    var FS_FILE = null;
+    (function () {
+        var f = CFG.floatingShadowPreset ? new File(CFG.floatingShadowPreset) : new File(File($.fileName).parent.fsName + "/FloatingShadow.ffx");
+        if (f.exists) FS_FILE = f;
+    })();
+    function floatingShadow(layer, comp, strength) { // strength: 1 = big frame, ~0.5 = small items
+        if (FS_FILE) {
+            try {
+                for (var k = 1; k <= comp.numLayers; k++) comp.layer(k).selected = false;
+                layer.selected = true;
+                layer.applyPreset(FS_FILE);
+                layer.selected = false;
+                return;
+            } catch (e) {}
+        }
+        // contact shadow (tight) + ambient shadow (far & soft) = floating look
+        dropShadow(layer, [0, 0, 0], 35, 180, 6 * strength + 2, 12 * strength + 4);
+        dropShadow(layer, [0, 0, 0], 40, 180, 40 * strength + 4, 90 * strength + 10);
     }
 
     function shapeLayer(comp, name) {
@@ -168,19 +199,20 @@
     }
     if (vids.length < 2) { alert("Need 2 video layers in the comp (Before + After). Found: " + vids.length); return; }
 
-    function nm(l) { return (l.name + " " + l.source.name).toLowerCase(); }
+    function clean(x) { return String(x).toLowerCase().replace(/\.[a-z0-9]+$/, "").replace(/^\s+|\s+$/g, ""); }
+    function isName(l, words) {
+        var a = clean(l.name), b = clean(l.source.name);
+        for (var w = 0; w < words.length; w++) if (a === words[w] || b === words[w]) return true;
+        return false;
+    }
     var beforeL = null, afterL = null;
     for (i = 0; i < vids.length; i++) {
-        var n = nm(vids[i]);
-        if (!beforeL && (n.indexOf("before") >= 0 || n.indexOf("قبل") >= 0)) beforeL = vids[i];
-        else if (!afterL && (n.indexOf("after") >= 0 || n.indexOf("بعد") >= 0)) afterL = vids[i];
+        if (!afterL && isName(vids[i], ["after", "بعد"])) afterL = vids[i];
+        else if (!beforeL && isName(vids[i], ["before", "قبل"])) beforeL = vids[i];
     }
-    if (!afterL || !beforeL || afterL === beforeL) {
-        var sel = src.selectedLayers, pool = (sel.length === 2) ? [sel[0], sel[1]] : [vids[0], vids[1]];
-        pool.sort(function (a, b) { return a.index - b.index; });
-        if (!afterL && !beforeL) { afterL = pool[0]; beforeL = pool[1]; }
-        else if (!afterL) afterL = (pool[0] === beforeL) ? pool[1] : pool[0];
-        else beforeL = (pool[0] === afterL) ? pool[1] : pool[0];
+    if (!afterL || !beforeL) {
+        alert("Couldn't find the videos by name.\nName one video \"After\" and the other \"Before\" (layer or file name), then run again.\n\nFound After: " + (afterL ? "yes" : "NO") + "\nFound Before: " + (beforeL ? "yes" : "NO"));
+        return;
     }
 
     app.beginUndoGroup("Before After Style");
@@ -274,12 +306,12 @@
     bL.name = "BEFORE";
     bL.property("ADBE Transform Group").property("ADBE Position").setValue([L.before.cx, L.before.cy]);
     bL.audioEnabled = false;
-    dropShadow(bL, [0, 0, 0], 45, 180, 14, 45);
+    floatingShadow(bL, fin, 0.7);
 
     var aL = fin.layers.add(afterComp);
     aL.name = "AFTER";
     aL.property("ADBE Transform Group").property("ADBE Position").setValue([L.after.cx, L.after.cy]);
-    dropShadow(aL, [0, 0, 0], 50, 180, 20, 60);
+    floatingShadow(aL, fin, 1);
 
     // pills
     function makePill(label, p, dotColor) {
@@ -290,20 +322,25 @@
         st.property("ADBE Vector Stroke Color").setValue(hex("6A6A6A"));
         st.property("ADBE Vector Stroke Width").setValue(p.h > 50 ? 2.5 : 1.5);
         st.property("ADBE Vector Stroke Opacity").setValue(55);
-        dropShadow(body, [0, 0, 0], 55, 180, p.h * 0.12, p.h * 0.35);
+        floatingShadow(body, fin, p.h > 50 ? 0.4 : 0.25);
 
         var dot = shapeLayer(fin, label + " dot");
         addEllipse(dot, "Dot", p.dotX, p.cy, p.dotD, dotColor);
         dropShadow(dot, dotColor, 85, 0, 0, p.dotD * 0.6); // glow
 
-        addText(fin, label, CFG.pillFont, p.size, [1, 1, 1], p.textX, p.base, p.textW).name = label + " label";
+        var t = addText(fin, label, CFG.pillFont, p.size, [1, 1, 1], p.textX, p.base, p.textW);
+        t.name = label + " label";
     }
     makePill(CFG.beforeLabel, L.beforePill, hex("FF1E1E"));
     makePill(CFG.afterLabel, L.afterPill, hex("3EE61A"));
 
     // CTA
-    addText(fin, CFG.ctaLine1, CFG.ctaFont1, L.cta1.size, hex("111111"), L.cta1.x, L.cta1.base, L.cta1.w, -15).name = "CTA line 1";
-    addText(fin, CFG.ctaLine2, CFG.ctaFont2, L.cta2.size, hex("0A0A0A"), L.cta2.x, L.cta2.base, L.cta2.w, -25).name = "CTA line 2";
+    var c1 = addText(fin, CFG.ctaLine1, CFG.ctaFont1, L.cta1.size, hex("111111"), L.cta1.x, L.cta1.base, L.cta1.w, 0);
+    c1.name = "CTA line 1";
+    floatingShadow(c1, fin, 0.2);
+    var c2 = addText(fin, CFG.ctaLine2, CFG.ctaFont2, L.cta2.size, hex("0A0A0A"), L.cta2.x, L.cta2.base, L.cta2.w, 0);
+    c2.name = "CTA line 2";
+    floatingShadow(c2, fin, 0.3);
 
     // extra audio-only layers (music / sfx)
     for (i = src.numLayers; i >= 1; i--) {

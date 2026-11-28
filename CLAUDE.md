@@ -1,5 +1,6 @@
 # Notes for Claude
 
-## Saved editing styles
-- **"Before After" / "بيفور افتر"**: `before-after-style/`. When the user says "طبق ستايل بيفور افتر" (apply the Before After style) with two videos on an After Effects timeline, give them `before-after-style/BeforeAfter_Style.jsx` to run from File > Scripts > Run Script File. It builds the full 1080x1920 comp and adds it to the Render Queue (the user renders it themselves). The spec is in `before-after-style/STYLE.md`. Any change to the style goes into the script.
-- **Editing tricks inside the reference "After" video** (captions, B-roll builds, transitions, look, SFX): `before-after-style/AFTER_EDIT_TRICKS.md`. Use it when the user asks for this editing style or these tricks.
+## Saved skills (in `.claude/skills/`)
+These are two separate things. Never mix them.
+- **`before-after`**: the Before After showcase template ("طبق ستايل بيفور افتر"). It only builds the layout around two videos named **After** and **Before**, using the script `before-after-style/BeforeAfter_Style.jsx`. It uses the Alexandria font and the Motion Kit floating shadow on the frames and text. It doesn't touch the editing inside the videos.
+- **`short-form-editing`**: the editing tricks and style (captions, B-roll, transitions, look, SFX) for Premiere Pro / After Effects. Use it only when the user asks for this editing style.
