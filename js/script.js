@@ -27,7 +27,7 @@
         });
     }
 
-    // --- Language switch (English by default, Arabic on demand; remembers the visitor's choice) ---
+    // --- Language switch (English by default, Arabic on demand; every visit opens in English) ---
     const AR = {
         title: 'محمود أحمد | محرر فيديو محترف',
         logo: 'محمود <span>أحمد</span>',
@@ -117,6 +117,7 @@
     const EN = { title: document.title };
     i18nEls.forEach(el => { EN[el.dataset.i18n] = el.innerHTML; });
 
+    try { localStorage.removeItem('lang'); } catch (e) { }
     const langBtn = document.getElementById('lang-toggle');
 
     function applyLang(lang, live) {
@@ -141,13 +142,10 @@
         }
     }
 
-    if (root.getAttribute('lang') === 'ar') applyLang('ar', false);
-
     if (langBtn) {
         langBtn.addEventListener('click', () => {
             const next = root.getAttribute('lang') === 'ar' ? 'en' : 'ar';
             applyLang(next, true);
-            try { localStorage.setItem('lang', next); } catch (e) { }
         });
     }
 
