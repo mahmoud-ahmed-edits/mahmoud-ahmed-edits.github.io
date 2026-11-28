@@ -27,6 +27,129 @@
         });
     }
 
+    // --- Language switch (English by default, Arabic on demand; remembers the visitor's choice) ---
+    const AR = {
+        title: 'محمود أحمد | محرر فيديو محترف',
+        logo: 'محمود <span>أحمد</span>',
+        nav_about: 'نبذة عني',
+        nav_skills: 'المهارات',
+        nav_projects: 'أعمالي',
+        nav_feedback: 'آراء العملاء',
+        nav_services: 'الخدمات',
+        nav_contact: 'تواصل معي',
+        badge: 'سنوات من الخبرة',
+        hello: 'مرحباً، أنا',
+        name: '<span>محمود</span> <span class="alt">أحمد.</span>',
+        role: '<span class="hl">محرر فيديو</span> محترف',
+        hero_text: 'أحوّل اللقطات الخام إلى فيديوهات مؤثرة تجعل المشاهد يتابع حتى النهاية — من فيديوهات يوتيوب إلى مقاطع الشورتس والريلز التي تستوقف المتابعين، لصنّاع المحتوى والعلامات التجارية.',
+        cta_work: 'شاهد أعمالي',
+        cta_talk: '<i class="fab fa-whatsapp"></i> لنتحدث',
+        about_eyebrow: 'من أنا',
+        about_title: 'نبذة <span class="accent">عني</span>',
+        about_lead: 'أنا محمود، محرر فيديو محترف بخبرة <mark>تزيد على 4 سنوات</mark>. أعمل على فيديوهات يوتيوب الطويلة والمحتوى القصير — <mark>الشورتس والريلز وتيك توك</mark> — إلى جانب الأعمال السينمائية والإعلانات التجارية.',
+        about_p2: 'المحتوى القصير هو مجال تميّزي الحقيقي: بداية جذابة من الثانية الأولى، وإيقاع سريع، ونصوص واضحة على الشاشة. أما في الفيديوهات الطويلة، فأركّز على السرد والإيقاع اللذين يُبقيان المشاهد حتى النهاية. ومع تصحيح ألوان احترافي وهندسة صوتية متقنة، يأتي كل فيديو منسجماً مع هوية علامتك — سواء كنت صانع محتوى تسعى لتنمية قناتك أو علامة تجارية تطلق حملة جديدة.',
+        why_title: 'لماذا تعمل <span class="accent">معي؟</span>',
+        why1_t: 'تسليم سريع',
+        why1_d: 'مواعيد واضحة وتسليم في الوقت المحدد — دون الحاجة إلى متابعة.',
+        why2_t: 'تعديلات مشمولة',
+        why2_d: 'نعمل معاً على تحسين المونتاج حتى يصبح كما تريده تماماً.',
+        why3_t: 'تواصل سهل',
+        why3_d: 'ردود سريعة وتحديثات مستمرة طوال فترة المشروع.',
+        why4_t: 'مصمَّم ليحقق النتائج',
+        why4_d: 'مونتاج مُعدّ خصيصاً لكل منصة ليجذب الانتباه ويحافظ على المشاهدين.',
+        skills_eyebrow: 'ما أتقنه',
+        skills_title: 'أبرز <span class="accent">مهاراتي</span>',
+        sk1: 'مونتاج الفيديو',
+        sk2: 'الصورة والصوت',
+        sk3: 'الأدوات والتقنيات',
+        sk4: 'فيديوهات الذكاء الاصطناعي',
+        ski1: 'شورتس / ريلز / تيك توك',
+        ski2: 'فيديوهات يوتيوب الطويلة',
+        ski3: 'فيديوهات سينمائية',
+        ski4: 'مونتاج إعلاني',
+        ski5: 'تصحيح الألوان',
+        ski6: 'الهندسة الصوتية',
+        ski7: 'نصوص متحركة',
+        ski8: 'مؤثرات بصرية وانتقالات',
+        ski9: 'العمل بالذكاء الاصطناعي',
+        ski10: 'فيديوهات مولَّدة بالذكاء الاصطناعي',
+        ski11: 'مشاهد ومرئيات بالذكاء الاصطناعي',
+        ski12: 'تعليق صوتي بالذكاء الاصطناعي',
+        ski13: 'مونتاج معزَّز بالذكاء الاصطناعي',
+        proj_eyebrow: 'أعمال مختارة',
+        proj_title: 'معرض <span class="accent">أعمالي</span>',
+        works_t: 'أعمالي',
+        works_d: 'مجموعة مختارة من أفضل أعمالي في مختلف الأنماط التي أعمل عليها:',
+        chip1: '<i class="fas fa-mobile-screen-button"></i> شورتس وريلز',
+        chip2: '<i class="fab fa-tiktok"></i> تيك توك',
+        chip3: '<i class="fas fa-bullhorn"></i> إعلانات',
+        works_btn: '<i class="fab fa-google-drive"></i> شاهد أعمالي',
+        fb_eyebrow: 'آراء العملاء',
+        fb_t: 'ماذا يقول عملائي',
+        fb_d: 'رسائل وتقييمات حقيقية من صنّاع محتوى وعلامات تجارية عملت معهم.',
+        fb_btn: '<i class="fas fa-comment-dots"></i> اقرأ آراء العملاء',
+        svc_eyebrow: 'الخدمات',
+        svc_title: 'ماذا <span class="accent">أقدّم</span>',
+        svc1_t: 'شورتس وريلز وتيك توك',
+        svc1_d: 'مونتاج عمودي سريع ومؤثر، ببداية جذابة من الثانية الأولى، ونصوص متحركة، وأساليب رائجة تُبقي المشاهدين متابعين.',
+        svc2_t: 'فيديوهات يوتيوب الطويلة',
+        svc2_d: 'مونتاج يركّز على الاحتفاظ بالمشاهدين: إيقاع مدروس، ولقطات داعمة، ونصوص على الشاشة، وسرد قصصي يُبقي المشاهد حتى النهاية.',
+        svc3_t: 'سينمائي وإعلاني',
+        svc3_d: 'تصحيح ألوان وهندسة صوتية وإيقاع سردي للإعلانات والعروض الترويجية والمقاطع التشويقية والأفلام التعريفية للعلامات التجارية.',
+        svc4_t: 'موشن جرافيك',
+        svc4_d: 'عناوين ونصوص متحركة وأشرطة تعريفية ومؤثرات بصرية ترتقي بعلامتك وبجودة إنتاجك.',
+        ct_eyebrow: 'لنتعاون معاً',
+        ct_title: 'لنصنع فيديوك <span class="accent">القادم.</span>',
+        ct_lead: 'هل تريد أن تحظى فيديوهاتك بالمشاهدة فعلاً؟ أرسل لي رسالة، ولنصنع معاً محتوى يستوقف المتابعين.',
+        ct_btn: '<i class="fab fa-whatsapp"></i> تواصل عبر واتساب',
+        ct_phone: 'الهاتف / واتساب',
+        ct_email: 'البريد الإلكتروني',
+        ct_loc: 'الموقع',
+        ct_loc_v: 'الجيزة، مصر · العمل عن بُعد حول العالم',
+        pill: '<i class="fas fa-location-dot"></i> الجيزة · العمل عن بُعد حول العالم',
+        copy: '&copy; 2026 محمود أحمد. جميع الحقوق محفوظة.',
+        top: 'العودة إلى الأعلى <i class="fas fa-arrow-up"></i>',
+        wa: '<i class="fab fa-whatsapp"></i> راسلني على واتساب'
+    };
+
+    const i18nEls = [...document.querySelectorAll('[data-i18n]')];
+    const EN = { title: document.title };
+    i18nEls.forEach(el => { EN[el.dataset.i18n] = el.innerHTML; });
+
+    const langBtn = document.getElementById('lang-toggle');
+
+    function applyLang(lang, live) {
+        const dict = lang === 'ar' ? AR : EN;
+        root.setAttribute('lang', lang);
+        root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.title = dict.title;
+        i18nEls.forEach(el => {
+            const html = dict[el.dataset.i18n];
+            if (html === undefined) return;
+            el.innerHTML = html;
+            if (live && el.classList.contains('float-text')) {
+                splitWords(el);
+                el.classList.add('in');
+            }
+        });
+        if (langBtn) {
+            const toAr = lang !== 'ar';
+            langBtn.setAttribute('lang', toAr ? 'ar' : 'en');
+            langBtn.setAttribute('aria-label', toAr ? 'عرض الموقع باللغة العربية' : 'View the site in English');
+            langBtn.querySelector('span').textContent = toAr ? 'عربي' : 'English';
+        }
+    }
+
+    if (root.getAttribute('lang') === 'ar') applyLang('ar', false);
+
+    if (langBtn) {
+        langBtn.addEventListener('click', () => {
+            const next = root.getAttribute('lang') === 'ar' ? 'en' : 'ar';
+            applyLang(next, true);
+            try { localStorage.setItem('lang', next); } catch (e) { }
+        });
+    }
+
     // --- Mobile menu ---
     const navbar = document.querySelector('.navbar');
     const mobileBtn = document.querySelector('.mobile-menu-btn');
@@ -62,7 +185,7 @@
     });
 
     // --- Floating drop-shadow text: split headings into words ---
-    document.querySelectorAll('.float-text').forEach(el => {
+    function splitWords(el) {
         const units = [];
         [...el.childNodes].forEach(node => {
             if (node.nodeType === Node.TEXT_NODE) {
@@ -88,7 +211,8 @@
             }
             el.appendChild(u);
         });
-    });
+    }
+    document.querySelectorAll('.float-text').forEach(splitWords);
 
     // --- Reveal on scroll ---
     const io = new IntersectionObserver((entries) => {

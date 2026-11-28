@@ -16,6 +16,7 @@
     <meta property="og:title" content="Mahmoud Ahmed | Professional Video Editor">
     <meta property="og:description"
         content="4+ years of video editing experience — YouTube, Shorts & Reels, cinematic and commercial videos.">
+    <meta property="og:url" content="https://mahmoud-ahmed-edits.github.io/">
     <meta property="og:image" content="https://mahmoud-ahmed-edits.github.io/img/share-card-2026.jpg">
     <meta property="og:image:secure_url" content="https://mahmoud-ahmed-edits.github.io/img/share-card-2026.jpg">
     <meta property="og:image:type" content="image/jpeg">
@@ -36,6 +37,7 @@
             var d = document.documentElement;
             d.classList.add('js');
             try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t); } catch (e) { }
+            try { if (localStorage.getItem('lang') === 'ar') { d.setAttribute('lang', 'ar'); d.setAttribute('dir', 'rtl'); } } catch (e) { }
         })();
     </script>
 
@@ -47,10 +49,10 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="stylesheet" href="css/style.css?v=5">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -63,22 +65,23 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#hero" class="logo">Mahmoud <span>Ahmed</span></a>
-            <button class="mobile-menu-btn" aria-label="Toggle navigation" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
+            <a href="#hero" class="logo" data-i18n="logo">Mahmoud <span>Ahmed</span></a>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#feedback">Client Feedback</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact" class="btn-nav">Contact Me</a></li>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+                <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="#feedback" data-i18n="nav_feedback">Client Feedback</a></li>
+                <li><a href="#services" data-i18n="nav_services">Services</a></li>
+                <li><a href="#contact" class="btn-nav" data-i18n="nav_contact">Contact Me</a></li>
                 <li class="nav-controls">
                     <button id="theme-toggle" aria-label="Toggle dark mode" class="icon-btn"><i
                             class="fas fa-moon"></i></button>
                 </li>
             </ul>
+            <button id="lang-toggle" class="lang-btn" type="button" lang="ar" aria-label="عرض الموقع باللغة العربية"><i class="fas fa-globe" aria-hidden="true"></i><span>عربي</span></button>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -91,17 +94,17 @@
         </div>
         <div class="container hero-content">
             <div class="hero-text-content">
-                <span class="experience-badge reveal"><i class="rec-dot"></i> <span><span class="count" data-target="4">0</span>+ Years of Experience</span></span>
-                <h2 class="hero-hello reveal float-soft">Hello, I'm</h2>
-                <h1 class="hero-name float-text"><span>Mahmoud</span> <span class="alt">Ahmed.</span></h1>
-                <h3 class="hero-role reveal float-soft">Professional <span class="hl">Video Editor</span></h3>
-                <p class="hero-text reveal float-soft">
+                <span class="experience-badge reveal"><i class="rec-dot"></i> <span><span class="count" data-target="4">0</span>+ <span data-i18n="badge">Years of Experience</span></span></span>
+                <h2 class="hero-hello reveal float-soft" data-i18n="hello">Hello, I'm</h2>
+                <h1 class="hero-name float-text" data-i18n="name"><span>Mahmoud</span> <span class="alt">Ahmed.</span></h1>
+                <h3 class="hero-role reveal float-soft" data-i18n="role">Professional <span class="hl">Video Editor</span></h3>
+                <p class="hero-text reveal float-soft" data-i18n="hero_text">
                     I turn raw footage into high-impact videos that keep people watching — from YouTube videos to
                     scroll-stopping Shorts and Reels, for creators and brands.
                 </p>
                 <div class="cta-group reveal">
-                    <a href="#projects" class="btn btn-dark">View My Work</a>
-                    <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="btn btn-line"><i class="fab fa-whatsapp"></i> Let's Talk</a>
+                    <a href="#projects" class="btn btn-dark" data-i18n="cta_work">View My Work</a>
+                    <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="btn btn-line" data-i18n="cta_talk"><i class="fab fa-whatsapp"></i> Let's Talk</a>
                 </div>
             </div>
             <div class="hero-photo reveal">
@@ -116,16 +119,16 @@
     <section id="about" class="section about-section">
         <div class="container about-grid">
             <div class="about-body">
-                <span class="eyebrow animate-on-scroll">About me</span>
-                <h2 class="section-title float-text">About <span class="accent">Me</span></h2>
+                <span class="eyebrow animate-on-scroll" data-i18n="about_eyebrow">About me</span>
+                <h2 class="section-title float-text" data-i18n="about_title">About <span class="accent">Me</span></h2>
 
                 <div class="about-text animate-on-scroll">
-                    <p class="about-lead float-soft">
+                    <p class="about-lead float-soft" data-i18n="about_lead">
                         I'm Mahmoud, a professional video editor with <mark>4+ years of experience</mark>. I edit
                         both long-form YouTube videos and short-form content — <mark>Shorts, Reels and TikToks</mark>
                         — along with cinematic pieces and commercial ads.
                     </p>
-                    <p>
+                    <p data-i18n="about_p2">
                         Short-form is where I really shine: strong hooks in the first second, fast pacing and clean
                         captions. In long-form, I focus on storytelling and pacing that keep viewers watching until the
                         end. With polished color grading and sound design, every video feels on-brand — whether you're
@@ -133,27 +136,27 @@
                     </p>
                 </div>
 
-                <h3 class="why-title float-text">Why Work <span class="accent">With Me</span></h3>
+                <h3 class="why-title float-text" data-i18n="why_title">Why Work <span class="accent">With Me</span></h3>
                 <div class="why-grid">
                     <div class="why-card animate-on-scroll">
                         <span class="why-icon"><i class="fas fa-bolt"></i></span>
-                        <h4>Fast Delivery</h4>
-                        <p>Clear deadlines, delivered on time — no chasing needed.</p>
+                        <h4 data-i18n="why1_t">Fast Delivery</h4>
+                        <p data-i18n="why1_d">Clear deadlines, delivered on time — no chasing needed.</p>
                     </div>
                     <div class="why-card animate-on-scroll">
                         <span class="why-icon"><i class="fas fa-rotate"></i></span>
-                        <h4>Revisions Included</h4>
-                        <p>We refine the edit together until it's exactly what you want.</p>
+                        <h4 data-i18n="why2_t">Revisions Included</h4>
+                        <p data-i18n="why2_d">We refine the edit together until it's exactly what you want.</p>
                     </div>
                     <div class="why-card animate-on-scroll">
                         <span class="why-icon"><i class="fas fa-comments"></i></span>
-                        <h4>Easy Communication</h4>
-                        <p>Quick replies and regular updates throughout the project.</p>
+                        <h4 data-i18n="why3_t">Easy Communication</h4>
+                        <p data-i18n="why3_d">Quick replies and regular updates throughout the project.</p>
                     </div>
                     <div class="why-card animate-on-scroll">
                         <span class="why-icon"><i class="fas fa-chart-line"></i></span>
-                        <h4>Made to Perform</h4>
-                        <p>Edits built for each platform to grab attention and keep viewers watching.</p>
+                        <h4 data-i18n="why4_t">Made to Perform</h4>
+                        <p data-i18n="why4_d">Edits built for each platform to grab attention and keep viewers watching.</p>
                     </div>
                 </div>
             </div>
@@ -163,51 +166,51 @@
     <!-- Skills Section -->
     <section id="skills" class="section skills-section">
         <div class="container">
-            <span class="eyebrow center animate-on-scroll">What I'm good at</span>
-            <h2 class="section-title center float-text">My <span class="accent">Skills</span></h2>
+            <span class="eyebrow center animate-on-scroll" data-i18n="skills_eyebrow">What I'm good at</span>
+            <h2 class="section-title center float-text" data-i18n="skills_title">My <span class="accent">Skills</span></h2>
 
             <div class="skills-grid">
                 <div class="skill-card animate-on-scroll">
                     <span class="skill-icon"><i class="fas fa-video"></i></span>
-                    <h3>Video Editing</h3>
+                    <h3 data-i18n="sk1">Video Editing</h3>
                     <ul class="skill-list">
-                        <li>Shorts / Reels / TikTok</li>
-                        <li>Long-Form YouTube</li>
-                        <li>Cinematic Videos</li>
-                        <li>Commercial Editing</li>
+                        <li data-i18n="ski1">Shorts / Reels / TikTok</li>
+                        <li data-i18n="ski2">Long-Form YouTube</li>
+                        <li data-i18n="ski3">Cinematic Videos</li>
+                        <li data-i18n="ski4">Commercial Editing</li>
                     </ul>
                 </div>
 
                 <div class="skill-card animate-on-scroll">
                     <span class="skill-icon"><i class="fas fa-photo-video"></i></span>
-                    <h3>Visual &amp; Audio</h3>
+                    <h3 data-i18n="sk2">Visual &amp; Audio</h3>
                     <ul class="skill-list">
-                        <li>Color Grading</li>
-                        <li>Sound Design</li>
-                        <li>Animated Captions</li>
-                        <li>VFX &amp; Transitions</li>
+                        <li data-i18n="ski5">Color Grading</li>
+                        <li data-i18n="ski6">Sound Design</li>
+                        <li data-i18n="ski7">Animated Captions</li>
+                        <li data-i18n="ski8">VFX &amp; Transitions</li>
                     </ul>
                 </div>
 
                 <div class="skill-card animate-on-scroll">
                     <span class="skill-icon"><i class="fas fa-tools"></i></span>
-                    <h3>Tools &amp; Tech</h3>
+                    <h3 data-i18n="sk3">Tools &amp; Tech</h3>
                     <ul class="skill-list">
                         <li>Premiere Pro</li>
                         <li>After Effects</li>
-                        <li>Work with AI</li>
+                        <li data-i18n="ski9">Work with AI</li>
                         <li>Adobe Audition</li>
                     </ul>
                 </div>
 
                 <div class="skill-card animate-on-scroll">
                     <span class="skill-icon"><i class="fas fa-wand-magic-sparkles"></i></span>
-                    <h3>AI Videos</h3>
+                    <h3 data-i18n="sk4">AI Videos</h3>
                     <ul class="skill-list">
-                        <li>AI-Generated Videos</li>
-                        <li>AI Visuals &amp; Scenes</li>
-                        <li>AI Voiceovers</li>
-                        <li>AI-Enhanced Editing</li>
+                        <li data-i18n="ski10">AI-Generated Videos</li>
+                        <li data-i18n="ski11">AI Visuals &amp; Scenes</li>
+                        <li data-i18n="ski12">AI Voiceovers</li>
+                        <li data-i18n="ski13">AI-Enhanced Editing</li>
                     </ul>
                 </div>
             </div>
@@ -217,8 +220,8 @@
     <!-- Projects Section -->
     <section id="projects" class="section projects-section">
         <div class="container">
-            <span class="eyebrow center animate-on-scroll">Selected work</span>
-            <h2 class="section-title center float-text">My <span class="accent">Projects</span></h2>
+            <span class="eyebrow center animate-on-scroll" data-i18n="proj_eyebrow">Selected work</span>
+            <h2 class="section-title center float-text" data-i18n="proj_title">My <span class="accent">Projects</span></h2>
 
             <!--
                 VIDEOS GO HERE.
@@ -241,26 +244,26 @@
 
             <div class="projects-split">
                 <div class="work-card animate-on-scroll">
-                    <h3>My Works</h3>
-                    <p>A selection of my best work across every style I edit:</p>
+                    <h3 data-i18n="works_t">My Works</h3>
+                    <p data-i18n="works_d">A selection of my best work across every style I edit:</p>
                     <ul class="category-chips">
-                        <li><i class="fas fa-mobile-screen-button"></i> Shorts &amp; Reels</li>
-                        <li><i class="fab fa-tiktok"></i> TikTok</li>
-                        <li><i class="fas fa-bullhorn"></i> Commercials</li>
+                        <li data-i18n="chip1"><i class="fas fa-mobile-screen-button"></i> Shorts &amp; Reels</li>
+                        <li data-i18n="chip2"><i class="fab fa-tiktok"></i> TikTok</li>
+                        <li data-i18n="chip3"><i class="fas fa-bullhorn"></i> Commercials</li>
                     </ul>
                     <a href="https://drive.google.com/drive/folders/1-1w1vYZmclSr6f-nv7SZDWRIHckUxNXC?usp=sharing"
-                        class="btn btn-sun" target="_blank" rel="noopener">
+                        class="btn btn-sun" target="_blank" rel="noopener" data-i18n="works_btn">
                         <i class="fab fa-google-drive"></i> Watch My Work
                     </a>
                 </div>
 
                 <aside id="feedback" class="feedback-card animate-on-scroll">
-                    <span class="eyebrow">Client Feedback</span>
+                    <span class="eyebrow" data-i18n="fb_eyebrow">Client Feedback</span>
                     <i class="fas fa-quote-left feedback-quote" aria-hidden="true"></i>
-                    <h3>What My Clients Say</h3>
-                    <p>Real messages and reviews from creators and brands I've worked with.</p>
+                    <h3 data-i18n="fb_t">What My Clients Say</h3>
+                    <p data-i18n="fb_d">Real messages and reviews from creators and brands I've worked with.</p>
                     <a href="https://drive.google.com/drive/folders/1bFNQIEyT3KbeM4JYlJVOazuAUslg0jVI?usp=drive_link"
-                        class="btn btn-dark" target="_blank" rel="noopener">
+                        class="btn btn-dark" target="_blank" rel="noopener" data-i18n="fb_btn">
                         <i class="fas fa-comment-dots"></i> Read Client Feedback
                     </a>
                 </aside>
@@ -271,31 +274,31 @@
     <!-- Services Section -->
     <section id="services" class="section services-section">
         <div class="container">
-            <span class="eyebrow animate-on-scroll">Services</span>
-            <h2 class="section-title float-text">What I <span class="accent">Do</span></h2>
+            <span class="eyebrow animate-on-scroll" data-i18n="svc_eyebrow">Services</span>
+            <h2 class="section-title float-text" data-i18n="svc_title">What I <span class="accent">Do</span></h2>
 
             <div class="svc-list">
                 <div class="svc-row animate-on-scroll">
                     <span class="svc-num">01</span>
-                    <h3>Shorts, Reels &amp; TikTok</h3>
-                    <p>Fast, punchy vertical edits with strong hooks in the first second, animated captions and
+                    <h3 data-i18n="svc1_t">Shorts, Reels &amp; TikTok</h3>
+                    <p data-i18n="svc1_d">Fast, punchy vertical edits with strong hooks in the first second, animated captions and
                         trending styles that keep viewers watching.</p>
                 </div>
                 <div class="svc-row animate-on-scroll">
                     <span class="svc-num">02</span>
-                    <h3>YouTube Long-Form</h3>
-                    <p>Retention-focused editing for YouTube: smart pacing, B-roll, captions and storytelling that
+                    <h3 data-i18n="svc2_t">YouTube Long-Form</h3>
+                    <p data-i18n="svc2_d">Retention-focused editing for YouTube: smart pacing, B-roll, captions and storytelling that
                         keeps viewers watching to the end.</p>
                 </div>
                 <div class="svc-row animate-on-scroll">
                     <span class="svc-num">03</span>
-                    <h3>Cinematic &amp; Commercial</h3>
-                    <p>Color grading, sound design and narrative pacing for ads, promos, trailers and brand films.</p>
+                    <h3 data-i18n="svc3_t">Cinematic &amp; Commercial</h3>
+                    <p data-i18n="svc3_d">Color grading, sound design and narrative pacing for ads, promos, trailers and brand films.</p>
                 </div>
                 <div class="svc-row animate-on-scroll">
                     <span class="svc-num">04</span>
-                    <h3>Motion Graphics</h3>
-                    <p>Animated titles, text, lower thirds and visual effects that lift your brand and production
+                    <h3 data-i18n="svc4_t">Motion Graphics</h3>
+                    <p data-i18n="svc4_d">Animated titles, text, lower thirds and visual effects that lift your brand and production
                         value.</p>
                 </div>
             </div>
@@ -311,12 +314,12 @@
         </div>
         <div class="container contact-container">
             <div class="contact-info">
-                <span class="eyebrow animate-on-scroll">Let's collaborate</span>
-                <h2 class="contact-title float-text">Let's make your next <span class="accent">video.</span></h2>
-                <p class="contact-lead animate-on-scroll float-soft">Want your videos to actually get watched? Send me a message and let's
+                <span class="eyebrow animate-on-scroll" data-i18n="ct_eyebrow">Let's collaborate</span>
+                <h2 class="contact-title float-text" data-i18n="ct_title">Let's make your next <span class="accent">video.</span></h2>
+                <p class="contact-lead animate-on-scroll float-soft" data-i18n="ct_lead">Want your videos to actually get watched? Send me a message and let's
                     create something that stops the scroll.</p>
 
-                <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="btn btn-sun animate-on-scroll">
+                <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="btn btn-sun animate-on-scroll" data-i18n="ct_btn">
                     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
 
@@ -331,23 +334,23 @@
             <div class="contact-cards">
                 <a href="tel:+201131473750" class="contact-card animate-on-scroll">
                     <i class="fas fa-phone"></i>
-                    <span class="contact-label">Phone / WhatsApp</span>
-                    <span class="contact-value">01131473750</span>
+                    <span class="contact-label" data-i18n="ct_phone">Phone / WhatsApp</span>
+                    <span class="contact-value" dir="ltr">01131473750</span>
                 </a>
                 <a href="mailto:maakholif2005@gmail.com" class="contact-card animate-on-scroll">
                     <i class="fas fa-envelope"></i>
-                    <span class="contact-label">Email</span>
+                    <span class="contact-label" data-i18n="ct_email">Email</span>
                     <span class="contact-value">maakholif2005@gmail.com</span>
                 </a>
                 <div class="contact-card animate-on-scroll">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span class="contact-label">Location</span>
-                    <span class="contact-value">Giza, Egypt · Remote worldwide</span>
+                    <span class="contact-label" data-i18n="ct_loc">Location</span>
+                    <span class="contact-value" data-i18n="ct_loc_v">Giza, Egypt · Remote worldwide</span>
                 </div>
             </div>
         </div>
         <div class="container contact-pills animate-on-scroll">
-            <span><i class="fas fa-location-dot"></i> Giza · Remote worldwide</span>
+            <span data-i18n="pill"><i class="fas fa-location-dot"></i> Giza · Remote worldwide</span>
         </div>
     </section>
 
@@ -362,13 +365,13 @@
                 <a href="https://www.instagram.com/ma7moud_editor?igsh=MW5ocDUxYjZjMHZvMw%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.tiktok.com/@ma7moud_editor?_r=1&_t=ZS-94K9Zb2Dur4" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
-            <p>&copy; 2026 Mahmoud Ahmed. All Rights Reserved.</p>
-            <a href="#hero" class="back-to-top">Back to Top <i class="fas fa-arrow-up"></i></a>
+            <p data-i18n="copy">&copy; 2026 Mahmoud Ahmed. All Rights Reserved.</p>
+            <a href="#hero" class="back-to-top" data-i18n="top">Back to Top <i class="fas fa-arrow-up"></i></a>
         </div>
     </footer>
 
     <!-- Floating WhatsApp button (mobile) -->
-    <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/message/O63UU4PVAGBRB1" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp" data-i18n="wa">
         <i class="fab fa-whatsapp"></i> WhatsApp me
     </a>
 
@@ -385,7 +388,7 @@
         </div>
     </div>
 
-    <script src="js/script.js?v=4"></script>
+    <script src="js/script.js?v=5"></script>
 </body>
 
 </html>
